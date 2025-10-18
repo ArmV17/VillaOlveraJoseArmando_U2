@@ -133,3 +133,19 @@ body {
     font-size: 14px;
     color: #ddd;
 }
+
+/* Botón de cerrar sesión */
+.logout-btn {
+    background-color: #0e1a4e;
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-left: 15px;
+}
+
+.logout-btn:hover {
+    background-color: #09214a;
+}
