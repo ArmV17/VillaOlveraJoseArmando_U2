@@ -12,7 +12,7 @@
         <div class="login-box">
             <img src="img/Logo.png" alt="Destiny Coffee Logo" class="logo">
             <h1>Log In</h1>
-            <form action="http://localhost:5000/login" method="POST">
+            <form id="loginForm" method="POST">
                 <div class="input-group">
                     <label for="usuario">Usuario</label>
                     <input type="text" id="usuario" name="username" placeholder="Ingresa tu usuario" required>
@@ -22,9 +22,39 @@
                     <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
                 </div>
                 <button type="submit">Iniciar Sesión</button>
+                <div id="loginError" style="color: #FF6B6B; margin-top: 10px; font-weight: 600;"></div>
             </form>
             <p class="footer">© 2025 Destiny Coffee</p>
         </div>
     </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorDiv = document.getElementById('loginError');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página se recargue
+
+            const formData = new FormData(form);
+
+            fetch('/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.text())
+            .then(data => {
+                // Si el login devuelve el mensaje de error, lo mostramos
+                if (data.includes('incorrectos')) {
+                    errorDiv.textContent = "Usuario o contraseña incorrectos";
+                } else {
+                    // Redirige si login fue exitoso
+                    window.location.href = '/main.html';
+                }
+            })
+            .catch(err => {
+                errorDiv.textContent = "Error en la conexión, intenta de nuevo";
+            });
+        });
+    </script>
 </body>
 </html>
