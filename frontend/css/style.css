@@ -1,0 +1,204 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0e1a4e; /* Azul principal */
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor del login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caja del login */
+.login-box {
+    background-color: rgba(111, 78, 55, 0.95); /* Café con ligera transparencia */
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* Logo */
+.logo {
+    width: 350px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Título */
+h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Grupo de entradas */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Centrar los inputs dentro del grupo */
+.input-group input {
+    display: block;       
+    margin: 0 auto;      
+    width: 80%;         
+    padding: 12px 15px;
+    border: none;
+    border-radius: 12px;
+    background-color: #0e1a4e;
+    color: #FFFFFF;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.input-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 4px;
+    border: none;
+    border-radius: 12px;
+    background-color: #0e1a4e;
+    color: #FFFFFF;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.input-group input::placeholder {
+    color: #cfcfcf;
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* Botón */
+button {
+    display: block;    
+    margin: 0 auto;
+    padding: 14px;
+    background-color: #0e1a4e;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 60%;
+}
+
+button:hover {
+    background-color: #09214a;
+    transform: translateY(-2px);
+}
+
+/* Pie de página */
+.footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #ddd;
+}
+
+/* Contenedor del index */
+.index-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #0e1a4e, #6F4E37); /* Fondo degradado azul-café */
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+}
+
+/* Caja principal */
+.index-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.index-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* Logo */
+.index-box .logo {
+    width: 200px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Título */
+.index-box h1 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Texto */
+.index-box p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Botón de cerrar sesión */
+#index-box button, #logoutBtn {
+    display: block;
+    margin: 0 auto;
+    padding: 14px 25px;
+    background-color: #0e1a4e;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#index-box button:hover, #logoutBtn:hover {
+    background-color: #09214a;
+    transform: translateY(-2px);
+}
