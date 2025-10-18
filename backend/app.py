@@ -1,6 +1,5 @@
-from flask import Flask, request, redirect, send_from_directory, session
+from flask import Flask, request, redirect, send_from_directory, session, make_response
 import sqlite3
-import os
 
 # Configuración de Flask
 app = Flask(__name__, static_folder='../frontend', template_folder='../frontend')
@@ -42,21 +41,26 @@ def login():
     else:
         return "Usuario o contraseña incorrectos"
 
-# Ruta para cerrar sesión
+# Ruta logout
 @app.route('/logout')
 def logout():
     session.pop('user', None)
     return redirect("/login.html")
 
-# Servir main.html solo si está logueado
+# Servir main.html solo si está logueado, y prevenir cache para que no se pueda volver con "atrás"
 @app.route('/main.html')
 def main_page():
     if 'user' in session:
-        return app.send_static_file('main.html')
+        response = make_response(app.send_static_file('main.html'))
+        # Evitar cache en el navegador
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
     else:
         return redirect('/login.html')
 
-# Servir cualquier archivo estático desde frontend/
+# Servir otros archivos estáticos desde frontend/
 @app.route('/<path:path>')
 def static_files(path):
     return send_from_directory(app.static_folder, path)
