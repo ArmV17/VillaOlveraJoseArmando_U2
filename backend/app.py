@@ -1,11 +1,13 @@
-from flask import Flask, request, redirect, url_for, render_template_string
+from flask import Flask, request, redirect, send_from_directory
 import sqlite3
+import os
 
-app = Flask(__name__)
+# Carpeta estática apuntando a frontend
+app = Flask(__name__, static_folder='../frontend', template_folder='../frontend')
 
 DB_NAME = 'users.db'
 
-# Inicializar la base de datos si no existe
+# Inicializar base de datos
 def init_db():
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
@@ -14,7 +16,6 @@ def init_db():
                     username TEXT UNIQUE,
                     password TEXT
                  )''')
-    # Crear usuario demo
     c.execute("INSERT OR IGNORE INTO users (username, password) VALUES (?,?)", ("admin", "1234"))
     conn.commit()
     conn.close()
@@ -36,10 +37,10 @@ def login():
     else:
         return "Usuario o contraseña incorrectos"
 
-# Servir los archivos estáticos
+# Servir archivos estáticos desde frontend
 @app.route('/<path:path>')
-def serve_file(path):
-    return app.send_static_file(path)
+def static_files(path):
+    return send_from_directory(app.static_folder, path)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
